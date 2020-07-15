@@ -11,6 +11,10 @@ import NameQuestion from "./components/_NameQuestion";
 
 let questionTypePreference = 0.5; // This number represents questiontype balance, change numner between 0 and 1, to skew the results
 
+let vh = window.innerHeight * 0.01; //fix for the mobile browser vh
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+//still needs a buttondown enter event, and maybe swipe
 const mainBtn = document.querySelector("#btn");
 mainBtn.addEventListener("click", () => {
   mainBtn.innerHTML = "Next";
