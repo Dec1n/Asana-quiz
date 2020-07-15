@@ -21,10 +21,10 @@ body {
   height: calc(var(--vh, 1vh) * 100);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 16vh;
+  grid-template-rows: 1fr 15vh;
   grid-template-areas:
     "main"
-    "nav";
+    "btn";
   color: $blue;
   line-height: 1.5rem;
 }
@@ -67,7 +67,7 @@ body {
 
 // mainBtn
 .btn-container {
-  grid-area: nav;
+  grid-area: btn;
   display: flex;
   justify-content: center;
   align-items: flex-start;
