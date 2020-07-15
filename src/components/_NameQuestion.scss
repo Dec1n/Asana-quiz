@@ -1,0 +1,43 @@
+//question = name
+.name-quiz-container {
+  grid-area: main;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  .name-question {
+    padding: 0.5rem 5vh;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 2rem;
+  }
+  .img-input-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 0.3rem;
+  }
+  .img-input {
+    width: 43vw auto;
+    height: 43vw;
+    border-radius: 0.3rem;
+    margin: 0.3rem;
+    box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    border: 0.15rem solid $white;
+    background-color: $white;
+  }
+}
+@media (min-aspect-ratio: 33/50) {
+  .name-quiz-container {
+    .name-question {
+      font-size: 2.5rem;
+      line-height: 2rem;
+    }
+    .img-input {
+      height: 28vh;
+      width: auto;
+      margin: 1vh;
+    }
+  }
+}

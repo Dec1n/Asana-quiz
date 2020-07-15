@@ -1,0 +1,45 @@
+// question = img
+.img-quiz-container {
+  grid-area: main;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  .img-question {
+    width: auto;
+    height: 26vh;
+    border-radius: 0.5rem;
+  }
+  .name-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 5vw;
+    .name-input {
+      background-color: $white;
+      font-size: 1.1rem;
+      border-radius: 0.3rem;
+      margin: 0.35rem .3rem; 
+      padding: 1.8vh 0;
+      width: 90vmin;
+      text-align: center;
+      box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      border: 0.15rem solid $white;
+    }
+  }
+}
+@media (min-aspect-ratio: 40/50) {
+  .img-quiz-container {
+    .img-question {
+      height: 32vh;
+    }
+    .name-input-container {
+      .name-input {
+        width: 75vh;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
