@@ -30,19 +30,20 @@ body {
 }
 .home-container {
   grid-area: main;
-  margin: 20vh 0;
-  padding: 5vw;
-  width: 100vw;
-  background-color: $white;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.12);
+  .header-background{
+    width: 100vw;
+    padding: 10vh 5vw;
+    background-color: $white;
+    box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.12);
+  }
   .header {
     font-size: 2.7rem;
     font-weight: $medium;
     line-height: 2.7rem;
-    padding-bottom: 5vh;
+    padding-bottom:5vh;
   }
   .intro {
     line-height: 1.5rem;
@@ -53,10 +54,11 @@ body {
   }
 }
 @media (min-aspect-ratio: 50/50) {
-  .home-container {
-    padding-left: 20vmax;
-    padding-right: 20vmax;
+  .home-container{
+  .header-background {
+    padding: 10vh 20vmax;
   }
+}
 }
 
 //Components styling
