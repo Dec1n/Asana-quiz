@@ -642,13 +642,13 @@ const poses = [
     sanskrit: "Hasta Pādāṅguṣṭhāsana",
   },
 
-  {
-    id: 90,
-    img:
-      "https://pocketyoga.com/assets/images/poses/standing_hand_to_toe_R.png",
-    name: "Hand to Toe, Standing (Preparation)",
-    sanskrit: "Hasta Pādāṅguṣṭhāsana",
-  },
+  // {
+  //   id: 90,
+  //   img:
+  //     "https://pocketyoga.com/assets/images/poses/standing_hand_to_toe_R.png",
+  //   name: "Hand to Toe, Standing (Preparation)",
+  //   sanskrit: "Hasta Pādāṅguṣṭhāsana",
+  // },
 
   {
     id: 91,
@@ -658,12 +658,12 @@ const poses = [
     sanskrit: "Supta Hasta Pādāṅguṣṭhāsana",
   },
 
-  {
-    id: 92,
-    img: "https://pocketyoga.com/assets/images/poses/supine_hand_to_toe_R.png",
-    name: "Hand to Toe, Supine (Preparation)",
-    sanskrit: "Supta Hasta Pādāṅguṣṭhāsana",
-  },
+  // {
+  //   id: 92,
+  //   img: "https://pocketyoga.com/assets/images/poses/supine_hand_to_toe_R.png",
+  //   name: "Hand to Toe, Supine (Preparation)",
+  //   sanskrit: "Supta Hasta Pādāṅguṣṭhāsana",
+  // },
 
   {
     id: 93,
