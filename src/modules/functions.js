@@ -1,9 +1,4 @@
-export {
-  generateArrayRandomNumbers,
-  generateRandomBoolean,
-  randomNum,
-  objectMaker,
-};
+export { generateArrayRandomNumbers, generateRandomBoolean, randomNum, objectMaker };
 
 //Generates random Number(s), between 0 and range. Output is an array of length long
 const generateArrayRandomNumbers = (range, length) => {
