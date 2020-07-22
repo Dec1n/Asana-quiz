@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Practice the Sanskrit asana names of 198 different poses. All questions randomly generated and continue endlessly!",
   "main": "index.html",
+  "type": "module",
   "scripts": {
     "dev": "npm run clean && parcel public/index.html --out-dir development -p 3000",
     "build": "parcel build public/index.html --out-dir dist --public-url ./",
