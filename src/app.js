@@ -40,10 +40,8 @@ const generateNewQuestion = () => {
   templatePrinter(template); //Prints out question & multiple choose options
   const inputId = Array.from(document.querySelectorAll('.name-input, .img-input')); //Extracts multiple-chooce Elements
   inputFeedback(inputId, question, result); //On Click > Checks if multiple-chooce elements.Id === question.Id
-  console.log(result);
   counter(result);
   showResults(result);
-  console.log(result);
 };
 
 //Creating the templete for the Questions
@@ -85,23 +83,6 @@ const templateMaker = (question, options, randomBoolean) => {
 
 //Prints out the filled in Template
 const templatePrinter = (template) => document.querySelector('#app').appendChild(template);
-
-//On Click > Checks if multiple-choice.Id === question.Id, and triggers: isCorrect() or isWrong()
-// const inputFeedback = (inputId, question) => {
-//   for (let i = 0; i < 4; i++) {
-//     inputId[i].addEventListener(
-//       'click',
-//       () => {
-//         if (parseInt(inputId[i].id) === question.id) {
-//           isCorrect(inputId[i]);
-//         } else {
-//           isWrong(inputId[i]);
-//         }
-//       },
-//       { once: true }
-//     );
-//   }
-// };
 
 const inputFeedback = (inputId, question, result) => {
   for (let i = 0; i < 4; i++) {
@@ -148,6 +129,6 @@ const isWrong = (el) => {
 };
 
 const showResults = () => {
-  total.innerHTML = `total: ${result.total + 1}`;
+  total.innerHTML = `total: ${result.total} /`;
   totalRight.innerHTML = `right: ${result.correct}`;
 };
