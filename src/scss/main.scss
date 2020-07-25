@@ -72,20 +72,24 @@ body {
   grid-area: btn;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: row;
 }
 
-@media (min-aspect-ratio: 60/30) {
-  .btn-container {
-    background-color: $red;
-  }
-  .app-container {
-    grid-template-rows: 1fr 20vh;
-  }
+.results {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
 }
+// @media (min-aspect-ratio: 60/30) {
+//   .btn-container {
+//     background-color: $red;
+//   }
+//   .app-container {
+//     grid-template-rows: 1fr 20vh;
+//   }
+// }
 .btn {
-  padding: 0.8rem 2.5rem;
+  padding: 0.8rem 2rem;
   margin: 0.4rem;
   border: 0.05rem solid $white;
   border-radius: 5rem;
