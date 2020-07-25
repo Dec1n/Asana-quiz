@@ -11,14 +11,10 @@ const generateArrayRandomNumbers = (range, arrayLength) => {
 };
 
 //Generates random Boolean > balance should be a number between 0 and 1
-const generateRandomBoolean = (balance) => {
-  return Math.random() >= balance;
-};
+const generateRandomBoolean = (balance) => Math.random() >= balance;
 
 //Generates random Number between 0 and range
-const generateRandomNumber = (range) => {
-  return Math.floor(Math.random() * range);
-};
+const generateRandomNumber = (range) => Math.floor(Math.random() * range);
 
 //Question Object-maker > takes in data Array and Array with numbers
 const generateObject = (objectsArray, numsArray) => {

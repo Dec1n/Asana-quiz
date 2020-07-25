@@ -10,8 +10,6 @@ import ImageQuestion from './components/_ImageQuestion';
 import NameQuestion from './components/_NameQuestion';
 
 // fix for the mobile browser viewheigth
-const vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
 window.addEventListener('resize', () => {
   const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -72,9 +70,7 @@ const templateMaker = (question, options, boolean) => {
 };
 
 //Prints out the filled in Template
-const templatePrinter = (template) => {
-  document.querySelector('#app').appendChild(template);
-};
+const templatePrinter = (template) => document.querySelector('#app').appendChild(template);
 
 //On Click > Checks if multiple-choice.Id === question.Id, and triggers: Correct() or Wrong()
 const checkInput = (inputId, question) => {
