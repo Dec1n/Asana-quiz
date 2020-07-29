@@ -131,5 +131,5 @@ const isWrong = (el) => {
 };
 
 const showResults = () => {
-  results.innerHTML = `score: <span class="total-right">${result.correct}</span> out of <span class="total">${result.total}</span> correct!`;
+  results.innerHTML = `score: <span class="total-right">${result.correct}</span> out of <span class="total">${result.total}</span> correct`;
 };
