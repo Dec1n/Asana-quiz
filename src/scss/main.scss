@@ -78,8 +78,15 @@ body {
 
 .results {
   padding: 0.8rem 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  .total {
+    font-weight: bold;
+  }
+  .total-right {
+    font-weight: bold;
+  }
 }
+
 // @media (min-aspect-ratio: 60/30) {
 //   .btn-container {
 //     background-color: $red;
@@ -88,6 +95,7 @@ body {
 //     grid-template-rows: 1fr 20vh;
 //   }
 // }
+
 .btn {
   padding: 0.8rem 2rem;
   margin: 0.4rem;

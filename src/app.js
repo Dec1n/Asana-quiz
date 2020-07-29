@@ -18,7 +18,6 @@ window.addEventListener('resize', () => {
 });
 
 const questionTypePreference = 0.5; // This number represents questiontype balance, numner between 0 and 1
-
 const mainBtn = document.querySelector('#btn');
 const results = document.querySelector('#results');
 const total = document.querySelector('#total');
@@ -111,6 +110,7 @@ const result = {
   wrong: 0,
   total: -1,
 };
+
 const counter = (result) => {
   result.checked = 0;
   result.total += 1;
@@ -131,6 +131,10 @@ const isWrong = (el) => {
 };
 
 const showResults = () => {
-  total.innerHTML = `total: ${result.total} /`;
-  totalRight.innerHTML = `right: ${result.correct}`;
+  results.innerHTML = `score: <span class="total-right">${result.correct}</span> out of <span class="total">${result.total}</span> correct!`;
+  // total.innerHTML = `${result.correct}`;
+  // totalRight.innerHTML = `${result.total}`;
+
+  // total.innerHTML = `score: ${result.correct} out of ${result.total} correct!`;
+  // totalRight.innerHTML = `right: ${result.correct} /`;
 };
