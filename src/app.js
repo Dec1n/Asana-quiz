@@ -1,96 +1,140 @@
-import "./scss/main.scss";
-import poses from "./modules/posesData";
+import './scss/main.scss';
+import poses from './modules/posesData';
 import {
   generateArrayRandomNumbers,
+  generateRandomNumber,
+  generateObject,
   generateRandomBoolean,
-  randomNum,
-  objectMaker,
-} from "./modules/functions";
-import ImageQuestion from "./components/_ImageQuestion";
-import NameQuestion from "./components/_NameQuestion";
+} from './modules/functions';
+import ImageQuestion from './components/_ImageQuestion';
+import NameQuestion from './components/_NameQuestion';
 
-//fix for the mobile browser viewheigth
-let vh = window.innerHeight * 0.01; 
+// fix for the mobile browser viewheigth
+const vh = window.innerHeight * 0.01;
 document.documentElement.style.setProperty('--vh', `${vh}px`);
 window.addEventListener('resize', () => {
-  // We execute the same script as before
-  let vh = window.innerHeight * 0.01;
+  const vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
 
-let questionTypePreference = 0.5; // This number represents questiontype balance, change numner between 0 and 1, to skew the results
+const questionTypePreference = 0.5; // This number represents questiontype balance, numner between 0 and 1
+const mainBtn = document.querySelector('#btn');
+const results = document.querySelector('#results');
+const total = document.querySelector('#total');
+const totalRight = document.querySelector('#total-right');
 
-//still needs a buttondown enter event, and maybe swipe
-const mainBtn = document.querySelector("#btn");
-mainBtn.addEventListener("click", () => {
-  mainBtn.innerHTML = "Next";
-  const el = document.querySelector(".app-container");
+mainBtn.addEventListener('click', () => {
+  mainBtn.innerHTML = 'Next Question';
   resetCurrentView(); // removes the latest component (first Child of #app)
+  toggelBtnView(mainBtn);
+  toggelResultsView(results);
   generateNewQuestion();
 });
 
 const generateNewQuestion = () => {
   const posesSelection = generateArrayRandomNumbers(poses.length, 4); //Output: 4 random numbers from 0 till poses.length(198)
-  const questionNumber = randomNum(4); // Output: number between 0 and 4
-  const boolean = generateRandomBoolean(questionTypePreference); //Output: random boolean
-  const options = Object.values(objectMaker(poses, posesSelection)); //Makes and Array of Objects (values = from poses) > index-numbers from posesSelection
+  const questionNumber = generateRandomNumber(4); // Output: number between 0 and 4
+  const randomBoolean = generateRandomBoolean(questionTypePreference); //Output: random boolean
+  const options = Object.values(generateObject(poses, posesSelection)); //Makes and Array of Objects (values = from poses) > index-numbers from posesSelection
   const question = options.slice(questionNumber, questionNumber + 1)[0]; //Randomly picks a question and turn it into a Object
-  const template = templateMaker(question, options, boolean); //Prints out the question type to HTLM template
+  const template = templateMaker(question, options, randomBoolean); //Prints out the question type to HTLM template
   templatePrinter(template); //Prints out question & multiple choose options
-  const inputId = Array.from(
-    document.querySelectorAll(".name-input, .img-input")
-  ); //Extracts multiple-chooce Elements
-  checkInput(inputId, question); //On Click > Checks if multiple-chooce elements.Id === question.Id
+  const inputId = Array.from(document.querySelectorAll('.name-input, .img-input')); //Extracts multiple-chooce Elements
+  inputFeedback(inputId, question, result); //On Click > Checks if multiple-chooce elements.Id === question.Id
+  counter(result);
+  showResults(result);
 };
 
 //Creating the templete for the Questions
 const imageQuestionTemplate = (question, options) => {
-  const template = document.createElement("template");
+  const template = document.createElement('template');
   template.innerHTML = ImageQuestion(question, options);
   return template.content.cloneNode(true);
 };
 const nameQuestionTemplate = (question, options) => {
-  const template = document.createElement("template");
+  const template = document.createElement('template');
   template.innerHTML = NameQuestion(question, options);
   return template.content.cloneNode(true);
 };
 
 //removes current component view.
 const resetCurrentView = () => {
-  if (document.querySelector("#view") === null) return;
+  if (document.querySelector('#view') === null) return;
   view.remove();
 };
 
+// Hides & shows the button
+const toggelBtnView = (btn) => {
+  if (btn.classList.contains('hide') === true) {
+    btn.classList.remove('hide');
+  } else btn.classList.add('hide');
+};
+
+const toggelResultsView = (results) => {
+  if (results.classList.contains('hide') === true) {
+    results.classList.remove('hide');
+  } else results.classList.add('hide');
+};
+
 //Uses the already made template of the randomly choosen questionType, and adds the question & mulitiple-chooce in.
-const templateMaker = (question, options, boolean) => {
-  if (boolean === true) return nameQuestionTemplate(question, options);
+const templateMaker = (question, options, randomBoolean) => {
+  if (randomBoolean === true) return nameQuestionTemplate(question, options);
   return imageQuestionTemplate(question, options);
 };
 
 //Prints out the filled in Template
-const templatePrinter = (template) => {
-  document.querySelector("#app").appendChild(template);
-};
+const templatePrinter = (template) => document.querySelector('#app').appendChild(template);
 
-//On Click > Checks if multiple-choice.Id === question.Id, and triggers: Correct() or Wrong()
-const checkInput = (inputId, question) => {
+const inputFeedback = (inputId, question, result) => {
   for (let i = 0; i < 4; i++) {
-    inputId[i].addEventListener("click", () => {
-      if (parseInt(inputId[i].id) === question.id) {
-        isCorrect(inputId[i]);
-      } else {
-        isWrong(inputId[i]);
-      }
-    });
+    inputId[i].addEventListener(
+      'click',
+      () => {
+        if (parseInt(inputId[i].id) === question.id) {
+          isCorrect(inputId[i]);
+          result.checked = 1;
+        } else {
+          isWrong(inputId[i]);
+          result.checked = 1;
+        }
+      },
+      { once: true }
+    );
   }
 };
 
-//Adds a Class to a Element
+//Results Counter OBject > checked is a fix for the "only first input click problem"
+const result = {
+  checked: 0,
+  correct: 0,
+  wrong: 0,
+  total: -1,
+};
+
+const counter = (result) => {
+  result.checked = 0;
+  result.total += 1;
+};
+
+//Adds a CSS Class to a Element
 const isCorrect = (el) => {
-  el.classList.add("correct");
-  console.log("Right!");
+  el.classList.add('correct');
+  toggelBtnView(mainBtn);
+  toggelResultsView(results);
+  if (result.checked !== 0) return;
+  result.correct += 1;
 };
 const isWrong = (el) => {
-  el.classList.add("wrong");
-  console.log("wrong!");
+  el.classList.add('wrong');
+  if (result.checked !== 0) return;
+  result.wrong += 1;
+};
+
+const showResults = () => {
+  results.innerHTML = `score: <span class="total-right">${result.correct}</span> out of <span class="total">${result.total}</span> correct!`;
+  // total.innerHTML = `${result.correct}`;
+  // totalRight.innerHTML = `${result.total}`;
+
+  // total.innerHTML = `score: ${result.correct} out of ${result.total} correct!`;
+  // totalRight.innerHTML = `right: ${result.correct} /`;
 };

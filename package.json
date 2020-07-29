@@ -1,12 +1,14 @@
 {
-  "name": "asana-quiz-v1.0.0",
+  "name": "asana-quiz",
   "version": "1.0.0",
   "description": "Practice the Sanskrit asana names of 198 different poses. All questions randomly generated and continue endlessly!",
   "main": "index.html",
+  "type": "module",
   "scripts": {
     "dev": "npm run clean && parcel public/index.html --out-dir development -p 3000",
     "build": "parcel build public/index.html --out-dir dist --public-url ./",
-    "clean": "rimraf ./development && rimraf -rf ./.cache"
+    "clean": "rimraf ./development && rimraf -rf ./.cache",
+    "save": "prettier --write ."
   },
   "author": "Juliaan",
   "license": "ISC",
@@ -14,10 +16,19 @@
     "@babel/core": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/runtime-corejs2": "^7.9.2",
-    "parcel-bundler": "^1.12.4",
-    "sass": "^1.26.3"
+    "parcel-bundler": "^1.12.4"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
+    "prettier": "2.0.5",
+    "sass": "^1.26.3"
   }
 }
